@@ -1,0 +1,45 @@
+Labels are provisional source-file labels: 0=TCGA-LGG file, 1=TCGA-GBM file.
+They are not verified molecular subtype labels; labels were assigned from source files.
+Patient IDs found in the unnamed first column are retained as metadata and are not model features.
+
+LGG source (provisional class 0) (tcga_lgg.csv):
+  original CSV dimensions (rows x columns): 126 x 1214
+  numeric features: 1213
+  recognized ID columns: ['Unnamed: 0']
+  patient IDs found / unique / repeated: 126 / 126 / 0
+  non-numeric feature columns excluded: []
+  missing numeric cells (infinities converted to missing): 0
+  infinite numeric values found: 0
+  duplicate feature records: 0
+  provisional class distribution: 126
+GBM source (provisional class 1) (tcga_gbm.csv):
+  original CSV dimensions (rows x columns): 120 x 1214
+  numeric features: 1213
+  recognized ID columns: ['Unnamed: 0']
+  patient IDs found / unique / repeated: 120 / 120 / 0
+  non-numeric feature columns excluded: []
+  missing numeric cells (infinities converted to missing): 0
+  infinite numeric values found: 0
+  duplicate feature records: 0
+  provisional class distribution: 120
+
+Matched compatible features: 1213
+Combined matrix: 246 rows x 1213 numeric features, plus label and patient_id metadata
+Combined duplicate feature rows: 0
+Exact patient ID overlap across source files: 0
+Feature distribution check: 50 / 1213 feature medians differ by >0.25 standardized units; 2 differ by >0.50
+Largest absolute median difference: glszmsmallareaemphasis (0.5844)
+Combined missing feature cells: 0
+Provisional label distribution: {0: 126, 1: 120}
+
+Standardization check:
+  pooled median absolute feature mean: 8.13013e-12
+  pooled median feature standard deviation: 0.997957
+  LGG: median/max absolute feature mean=8.29363e-17/4.42336e-14; median feature SD=1; features with SD within 1e-6 of 1=1213/1213
+  GBM: median/max absolute feature mean=1.66667e-11/4.66667e-10; median feature SD=1; features with SD within 1e-6 of 1=1213/1213
+  Every feature in both files has SD within 1e-6 of 1 and means near zero, strongly consistent with separate whole-file column standardization.
+  If fitted on each complete source file, this includes the later validation rows and is an upstream leakage risk; the source data do not verify when/how it was done.
+  Unknown raw values/parameters cannot be recovered; fold-local scaling cannot undo that transformation.
+
+Feature names use known-prefix normalization followed by exact comparison; no fuzzy matching is used.
+Only numeric feature columns enter modeling. The patient_id metadata column is explicitly excluded by modeling scripts.

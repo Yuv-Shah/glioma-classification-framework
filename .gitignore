@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.pyc
+
+# Temporary files
+tmp/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
